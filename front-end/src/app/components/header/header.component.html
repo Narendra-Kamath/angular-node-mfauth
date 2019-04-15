@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" style="z-index: 99999;">
+  <a class="navbar-brand" [routerLink]="['/login']">NarenAuth v0.0</a>
+  <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleMenuBar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" *ngIf="!isLoggedIn">
+        <a class="nav-link" [routerLink]="['/register']">Register</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

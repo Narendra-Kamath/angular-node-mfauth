@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card card-container">
+    <div *ngIf="this.tfa.secret">
+
+      <h5 style="border-bottom: 1px solid #a8a8a8; padding-bottom: 5px;">Current Settings</h5>
+
+      <img [src]="tfa.dataURL" alt="" class="img-thumbnail" style="display:block;margin:auto">
+
+      <p>Secret Key - {{tfa.secret || tfa.tempSecret}}</p>
+
+      <p>Auth Type - Time Based - OTP</p>
+
+      <button class="btn btn-lg btn-danger btn-block btn-signin" (click)="disabledTfa()">Disable TFA</button>
+    </div>
+    <div *ngIf="!tfa.secret">
+
+      <h5 style="border-bottom: 1px solid #a8a8a8; padding-bottom: 5px;">Setup TFA</h5>
+
+      <span *ngIf="!!tfa.tempSecret">
+
+        <p>Scan the QR code or enter the secret key in Google Authenticator</p>
+
+        <img [src]="tfa.dataURL" alt="" class="img-thumbnail" style="display:block;margin:auto">
+
+        <p>Secret Key - {{tfa.tempSecret}}</p>
+
+        <p>Auth Type - Time Based - OTP</p>
+
+        <form class="form-group" (ngSubmit)="confirm()" #otpForm="ngForm">
+          <input name="authcode" type="number" #iauthcode="ngModel" class="form-control" maxlength="6"
+            placeholder="Enter the Auth Code" id="authcode" autocomplete="off" [(ngModel)]="authcode" required>
+          <br>
+          <button type="Submit" class="btn btn-lg btn-primary btn-block btn-signin"
+            [disabled]="iauthcode?.errors?.required">Enable TFA</button>
+        </form>
+        <p class="text-danger" style="text-align:center;" *ngIf="errorMessage">{{errorMessage}}</p>
+      </span>
+    </div>
+  </div>
+</div>
