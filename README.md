@@ -18,7 +18,8 @@ https://medium.com/@narendrakamath/create-an-angular-7-google-authenticator-node
 2. Google OTP — [ 다운로드 : Android] [ 다운로드 : iOS]
 
 ```
--- back-end 폴더로 이동
+cd back-end
+
 nvm install 10.15.3
 nvm use 10.15.3
 
@@ -29,12 +30,12 @@ node app.js
 ```
 
 ```
--- front-end 폴더로 이동
+cd front-end
 
 npm intall @angular/cli@7.3.8
 
 npm install
 
-node start
+node start -- ng serve
 
 ```
