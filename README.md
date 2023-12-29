@@ -11,4 +11,8 @@ https://medium.com/@narendrakamath/create-an-angular-7-google-authenticator-node
 
 
 
-설치 방법:
+# 설치 방법:
+
+## 전제조건
+1. Node JS (LTS) — [ 다운로드 ] ( 튜토리얼에서 v10.15.3 LTS 사용 )
+2. Google OTP — [ 다운로드 : Android] [ 다운로드 : iOS]
