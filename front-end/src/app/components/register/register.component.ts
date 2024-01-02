@@ -23,9 +23,9 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    if (this.userObject.uname.trim() !== "" && this.userObject.upass.trim() !== "" && (this.userObject.upass.trim() === this.confirmPass))
+    if (this.userObject.uname.trim() !== '' && this.userObject.upass.trim() !== '' && (this.userObject.upass.trim() === this.confirmPass)) {
       this._loginService.registerUser(this.userObject).subscribe((data) => {
-        const result = data.body
+        const result = data.body;
         if (result['status'] === 200) {
           this.errorMessage = result['message'];
           setTimeout(() => {
@@ -33,5 +33,6 @@ export class RegisterComponent implements OnInit {
           }, 2000);
         }
       });
+    }
   }
 }
