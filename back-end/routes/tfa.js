@@ -7,6 +7,8 @@ const router = express.Router();
 router.post('/tfa/setup', (req, res) => {
     console.log(`DEBUG: Received TFA setup request`);
     
+    // issuer : 발급자 이름 (ex. Google, Facebook, Shinhan 2FA)
+    // issuer + ": "+ uname : 발급자 이름 + 사용자 이름
     const issuer = 'Shinhan 2FA v0.1';
     const secret = speakeasy.generateSecret({
         length: 10,
