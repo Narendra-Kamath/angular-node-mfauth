@@ -15,14 +15,21 @@
       "program": "${workspaceFolder}\\back-end\\app.js"
     },
     // Chrome을 사용하여 실행 및 디버그
+    // 수동 실행을 위해 Chrome을 먼저 시작하고 디버거를 연결하려면
+    // "url"을 사용합니다.
     {
       "type": "chrome",
       "request": "launch",
       "name": "Launch Frontend",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}/front-end",
-
-    }    
+      "webRoot": "${workspaceFolder}\\front-end",
+    }
+    // {
+    //   "name": "Attach to Process",
+    //   "type": "node",
+    //   "request": "attach",
+    //   "processId": "${command:PickProcess}"
+    // },    
 
   ]
 }
