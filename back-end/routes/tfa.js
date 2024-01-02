@@ -6,16 +6,17 @@ const router = express.Router();
 
 router.post('/tfa/setup', (req, res) => {
     console.log(`DEBUG: Received TFA setup request`);
-
+    
+    const issuer = 'Shinhan 2FA v0.1';
     const secret = speakeasy.generateSecret({
         length: 10,
         name: commons.userObject.uname,
-        issuer: 'NarenAuth v0.0'
+        issuer: issuer
     });
     var url = speakeasy.otpauthURL({
         secret: secret.base32,
         label: commons.userObject.uname,
-        issuer: 'NarenAuth v0.0',
+        issuer: issuer,
         encoding: 'base32'
     });
     QRCode.toDataURL(url, (err, dataURL) => {
@@ -25,6 +26,8 @@ router.post('/tfa/setup', (req, res) => {
             dataURL,
             tfaURL: url
         };
+        // secret.base32 : 2FA 인증을 위한 임시 비밀키
+        // user database에 저장해야 함
         return res.json({
             message: 'TFA Auth needs to be verified',
             tempSecret: secret.base32,
